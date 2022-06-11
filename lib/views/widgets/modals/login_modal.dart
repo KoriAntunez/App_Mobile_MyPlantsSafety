@@ -62,7 +62,7 @@ class LoginModal extends StatelessWidget {
                 ),
                 child: RichText(
                   text: TextSpan(
-                    text: 'Forgot your password? ',
+                    text: 'Olvidaste tu contraseña? ',
                     style: TextStyle(color: Colors.grey),
                     children: [
                       TextSpan(
