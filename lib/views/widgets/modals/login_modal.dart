@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hungry/views/screens/page_switcher.dart';
 import 'package:hungry/views/utils/AppColor.dart';
 import 'package:hungry/views/widgets/custom_text_field.dart';
+import 'package:hungry/views/screens/bookmarks_page.dart';
 
 class LoginModal extends StatelessWidget {
   @override
@@ -47,6 +48,7 @@ class LoginModal extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).pop();
                     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => PageSwitcher()));
+                    //Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => BookmarksPage()));
                   },
                   child: Text('Login', style: TextStyle(color: AppColor.secondary, fontSize: 16, fontWeight: FontWeight.w600, fontFamily: 'inter')),
                   style: ElevatedButton.styleFrom(

@@ -59,14 +59,14 @@ class HomePage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Delicious Today',
+                            'Plantas registradas hoy',
                             style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w600, fontFamily: 'inter'),
                           ),
                           TextButton(
                             onPressed: () {
                               Navigator.of(context).push(MaterialPageRoute(builder: (context) => DeliciousTodayPage()));
                             },
-                            child: Text('see all'),
+                            child: Text('ver todo'),
                             style: TextButton.styleFrom(primary: Colors.white, textStyle: TextStyle(fontWeight: FontWeight.w400, fontSize: 14)),
                           ),
                         ],
@@ -108,7 +108,7 @@ class HomePage extends StatelessWidget {
                   margin: EdgeInsets.only(bottom: 16),
                   padding: EdgeInsets.symmetric(horizontal: 16),
                   child: Text(
-                    'Today recomendation based on your taste...',
+                    'Ya atendiste estas plantas?',
                     style: TextStyle(color: Colors.grey),
                   ),
                 ),
@@ -144,14 +144,14 @@ class HomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Newly Posted',
+                      'Plantas enfermas registradas',
                       style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, fontFamily: 'inter'),
                     ),
                     TextButton(
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(builder: (context) => NewlyPostedPage()));
                       },
-                      child: Text('see all'),
+                      child: Text('ver todo'),
                       style: TextButton.styleFrom(primary: Colors.black, textStyle: TextStyle(fontWeight: FontWeight.w400, fontSize: 14)),
                     ),
                   ],
