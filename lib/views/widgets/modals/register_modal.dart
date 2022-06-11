@@ -32,15 +32,15 @@ class RegisterModal extends StatelessWidget {
               Container(
                 margin: EdgeInsets.only(bottom: 24),
                 child: Text(
-                  'Get Started',
+                  'Registrarse',
                   style: TextStyle(color: Colors.black, fontSize: 22, fontWeight: FontWeight.w700, fontFamily: 'inter'),
                 ),
               ),
               // Form
               CustomTextField(title: 'Email', hint: 'youremail@email.com'),
-              CustomTextField(title: 'Full Name', hint: 'Your Full Name', margin: EdgeInsets.only(top: 16)),
+              CustomTextField(title: 'Nombre y Apellidos', hint: 'Nombre completo', margin: EdgeInsets.only(top: 16)),
               CustomTextField(title: 'Password', hint: '**********', obsecureText: true, margin: EdgeInsets.only(top: 16)),
-              CustomTextField(title: 'Retype Password', hint: '**********', obsecureText: true, margin: EdgeInsets.only(top: 16)),
+              CustomTextField(title: 'Repetir Password', hint: '**********', obsecureText: true, margin: EdgeInsets.only(top: 16)),
               // Register Button
               Container(
                 margin: EdgeInsets.only(top: 32, bottom: 6),
