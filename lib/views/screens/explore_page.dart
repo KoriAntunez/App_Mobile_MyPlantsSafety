@@ -9,10 +9,13 @@ import 'package:hungry/views/utils/AppColor.dart';
 import 'package:hungry/views/widgets/category_card.dart';
 import 'package:hungry/views/widgets/popular_recipe_card.dart';
 import 'package:hungry/views/widgets/recommendation_recipe_card.dart';
+// Agregado
+import 'package:hungry/views/widgets/modals/options_modal.dart';
 
 class ExplorePage extends StatelessWidget {
   final Recipe popularRecipe = RecipeHelper.popularRecipe;
-  final List<Recipe> sweetFoodRecommendationRecipe = RecipeHelper.sweetFoodRecommendationRecipe;
+  final List<Recipe> sweetFoodRecommendationRecipe =
+      RecipeHelper.sweetFoodRecommendationRecipe;
 
   @override
   Widget build(BuildContext context) {
@@ -22,14 +25,20 @@ class ExplorePage extends StatelessWidget {
         brightness: Brightness.dark,
         elevation: 0,
         centerTitle: false,
-        title: Text('Explore Recipe', style: TextStyle(fontFamily: 'inter', fontWeight: FontWeight.w400, fontSize: 16)),
+        title: Text('Explore Recipe',
+            style: TextStyle(
+                fontFamily: 'inter',
+                fontWeight: FontWeight.w400,
+                fontSize: 16)),
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => SearchPage()));
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => SearchPage()));
             },
-            icon: SvgPicture.asset('assets/icons/search.svg', color: Colors.white),
+            icon: SvgPicture.asset('assets/icons/search.svg',
+                color: Colors.white),
           ),
         ],
       ),
@@ -47,16 +56,135 @@ class ExplorePage extends StatelessWidget {
               spacing: 16,
               runSpacing: 16,
               children: [
-                CategoryCard(title: 'Healthy', image: AssetImage('assets/images/healthy.jpg')),
-                CategoryCard(title: 'Drink', image: AssetImage('assets/images/drink.jpg')),
-                CategoryCard(title: 'Seafood', image: AssetImage('assets/images/seafood.jpg')),
-                CategoryCard(title: 'Desert', image: AssetImage('assets/images/desert.jpg')),
-                CategoryCard(title: 'Spicy', image: AssetImage('assets/images/spicy.jpg')),
-                CategoryCard(title: 'Meat', image: AssetImage('assets/images/meat.jpg')),
+                CategoryCard(
+                    title: 'Pimienta',
+                    image: AssetImage('assets/images/pimienta.jpg')),
+                CategoryCard(
+                    title: 'Papa', image: AssetImage('assets/images/papa.jpg')),
+                CategoryCard(
+                    title: 'Tomate',
+                    image: AssetImage('assets/images/tomate.jpg')),
               ],
             ),
           ),
-          // Section 2 - Popular Card
+          // Section 2 - Button Option take a photo
+          Container(
+            margin: EdgeInsets.only(top: 32, bottom: 6, left: 16, right: 16),
+            width: MediaQuery.of(context).size.width,
+            height: 60,
+            child: ElevatedButton(
+              //onPressed: () {
+              //DisplayDialog();
+              //Navigator.of(context).pop();
+              //Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => OptionsModal()));
+              //},
+              child: Text(
+                'Toma una foto',
+                style: TextStyle(
+                    color: AppColor.secondary,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: 'inter'),
+              ),
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)),
+                primary: AppColor.primarySoft,
+              ),
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return SimpleDialog(
+                        title: Text('Elige una opción:',
+                            style: TextStyle(fontSize: 16)),
+                        children: [
+                          OptionsModal(
+                            icon: Icons.camera_alt,
+                            color: AppColor.primary,
+                            text: 'Cámara',
+                            onPressed: () {},
+                          ),
+                          OptionsModal(
+                            icon: Icons.photo,
+                            color: AppColor.primary,
+                            text: 'Galería',
+                            onPressed: () {},
+                          ),
+                        ],
+                      );
+                      /*
+                      AlertDialog(
+                        content: Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: 150,
+                          color: Colors.white,
+                          //child: Text('Elige una opción:'),
+                        ),
+                        actions: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  OptionsModal(
+                                    icon: Icons.camera_alt,
+                                    color: AppColor.primary,
+                                    text: 'Cámara',
+                                    onPressed: () {},
+                                  ),
+
+                                  /*
+                                  Container(
+                                    width: 120,
+                                    child: TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Text('cancel'),
+                                      style: TextButton.styleFrom(
+                                        primary: Colors.grey[600],
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Container(
+                                      child: FloatingActionButton(
+                                        onPressed: () {},
+                                        backgroundColor: AppColor.primary,
+                                        child: Icon(Icons.camera_alt),
+                                        //style: ElevatedButton.styleFrom(
+                                        //  primary: AppColor.primary,
+                                        //),
+                                      ),
+                                    ),
+                                  ),
+                                  */
+                                ],
+                              ),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  OptionsModal(
+                                    icon: Icons.photo,
+                                    color: AppColor.primary,
+                                    text: 'Galería',
+                                    onPressed: () {},
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
+                      ); */
+                    });
+              },
+            ),
+          ),
+
+          // Section 3 - Popular Card
           Container(
             width: MediaQuery.of(context).size.width,
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
@@ -90,7 +218,8 @@ class ExplorePage extends StatelessWidget {
                       return SizedBox(width: 16);
                     },
                     itemBuilder: (context, index) {
-                      return RecommendationRecipeCard(data: sweetFoodRecommendationRecipe[index]);
+                      return RecommendationRecipeCard(
+                          data: sweetFoodRecommendationRecipe[index]);
                     },
                   ),
                 )
