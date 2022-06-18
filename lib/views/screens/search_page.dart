@@ -24,7 +24,7 @@ class _SearchPageState extends State<SearchPage> {
         backgroundColor: AppColor.primary,
         elevation: 0,
         centerTitle: true,
-        title: Text('Search Recipe', style: TextStyle(fontFamily: 'inter', fontWeight: FontWeight.w400, fontSize: 16)),
+        title: Text('Historial', style: TextStyle(fontFamily: 'inter', fontWeight: FontWeight.w400, fontSize: 16)),
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios, color: Colors.white),
           onPressed: () {

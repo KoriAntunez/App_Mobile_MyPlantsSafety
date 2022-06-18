@@ -168,31 +168,31 @@ var popularRecipeRawData = {
 
 var featuredRecipeRawData = [
   {
-    'title': 'Green Leafy Vegetable Dish.',
+    'title': 'Planta de pimenton',
     'photo': 'assets/images/featured2.jpg',
-    'calories': '1500 Cal',
-    'time': '25 min',
-    'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    'calories': 'Resultado: Enferma',
+    'time': '',
+    'description': 'Planta de pimenton con la mancha bacteria',
     'ingridients': [
       {
-        'name': 'Spinach',
-        'size': '250 g',
+        'name': 'Planta',
+        'size': '',
       },
       {
-        'name': 'Noodles',
-        'size': '1000 g',
+        'name': 'Planta',
+        'size': '',
       },
       {
-        'name': 'Chili',
-        'size': '50 g',
+        'name': 'Planta',
+        'size': '',
       },
       {
-        'name': 'Chocolatte',
-        'size': '1000 g',
+        'name': 'Planta',
+        'size': '',
       },
       {
-        'name': 'Brocolli',
-        'size': '150 g',
+        'name': 'Planta',
+        'size': '',
       }
     ],
     'tutorial': [
@@ -242,31 +242,31 @@ var featuredRecipeRawData = [
     ]
   },
   {
-    'title': 'Noodles With Vegetable in Bowl.',
+    'title': 'Planta de pimenton.',
     'photo': 'assets/images/featured1.jpg',
-    'calories': '870 Cal',
-    'time': '32 min',
-    'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    'calories': 'Resultado: Sano',
+    'time': '',
+    'description': 'Planta de pimenton se encuentra Sana.',
     'ingridients': [
       {
-        'name': 'Spinach',
-        'size': '250 g',
+        'name': 'Planta',
+        'size': '',
       },
       {
-        'name': 'Noodles',
-        'size': '1000 g',
+        'name': 'Planta',
+        'size': '',
       },
       {
-        'name': 'Chili',
-        'size': '50 g',
+        'name': 'Planta',
+        'size': '',
       },
       {
-        'name': 'Chocolatte',
-        'size': '1000 g',
+        'name': 'Planta',
+        'size': '',
       },
       {
-        'name': 'Brocolli',
-        'size': '150 g',
+        'name': 'Planta',
+        'size': '',
       }
     ],
     'tutorial': [
@@ -316,31 +316,31 @@ var featuredRecipeRawData = [
     ]
   },
   {
-    'title': 'Healthy Vege Green Egg.',
+    'title': 'Planta de pimenton',
     'photo': 'assets/images/list1.jpg',
-    'calories': '1500 Cal',
-    'time': '25 min',
-    'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    'calories': 'Resultado: Enferma',
+    'time': 'Planta de pimenton con la mancha bacteria',
+    'description': '',
     'ingridients': [
       {
-        'name': 'Spinach',
-        'size': '250 g',
+        'name': 'Planta',
+        'size': '',
       },
       {
-        'name': 'Noodles',
-        'size': '1000 g',
+        'name': 'Planta',
+        'size': '',
       },
       {
-        'name': 'Chili',
-        'size': '50 g',
+        'name': 'Planta',
+        'size': '',
       },
       {
-        'name': 'Chocolatte',
-        'size': '1000 g',
+        'name': 'Planta',
+        'size': '',
       },
       {
-        'name': 'Brocolli',
-        'size': '150 g',
+        'name': 'Planta',
+        'size': '',
       }
     ],
     'tutorial': [
@@ -692,7 +692,7 @@ var recommendationRecipeRawData = [
 
 var newlyPostedRecipeRawData = [
   {
-    'title': 'Healthy Vege Green Egg.',
+    'title': 'Planta de pimenton con la mancha bacteria',
     'photo': 'assets/images/list1.jpg',
     'calories': '1500 Cal',
     'time': '25 min',
@@ -1440,7 +1440,7 @@ var popularRecipeKeyword = ['Noodles', 'Bakso', 'Kwetiaw', 'Nasi Goreng', 'Spagh
 
 var recipeSearchResultRawData = [
   {
-    'title': 'Healthy Vege Green Egg.',
+    'title': 'Planta de pimenton con la mancha bacteria',
     'photo': 'assets/images/list1.jpg',
     'calories': '1500 Cal',
     'time': '25 min',
@@ -1887,10 +1887,10 @@ var recipeSearchResultRawData = [
 
 var bookmarkedRecipeRawData = [
   {
-    'title': 'Healthy Vege Green Egg.',
+    'title': 'Planta de pimenton con la mancha bacteria',
     'photo': 'assets/images/list1.jpg',
-    'calories': '1500 Cal',
-    'time': '25 min',
+    'calories': 'Resultado: Enferma',
+    'time': '',
     'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     'ingridients': [
       {
@@ -1961,10 +1961,10 @@ var bookmarkedRecipeRawData = [
     ]
   },
   {
-    'title': 'Delicious Salad by Ron.',
+    'title': 'Planta de pimenton Sana',
     'photo': 'assets/images/list2.jpg',
-    'calories': '870 Cal',
-    'time': '32 min',
+    'calories': 'Resultado: Sana',
+    'time': '',
     'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     'ingridients': [
       {
@@ -2035,10 +2035,10 @@ var bookmarkedRecipeRawData = [
     ]
   },
   {
-    'title': 'Basil Leaves & Avocado Bread.',
+    'title': 'Planta de pimenton',
     'photo': 'assets/images/list4.jpg',
-    'calories': '1200 Cal',
-    'time': '40 min',
+    'calories': 'Resultado: Sana',
+    'time': '',
     'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     'ingridients': [
       {
@@ -2109,10 +2109,10 @@ var bookmarkedRecipeRawData = [
     ]
   },
   {
-    'title': 'Healthy Beef & Egg.',
+    'title': 'Planta de pimenton con la mancha bacteria',
     'photo': 'assets/images/list5.jpg',
-    'calories': '1100 Cal',
-    'time': '30 min',
+    'calories': 'Resultado: Enferma',
+    'time': '',
     'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     'ingridients': [
       {
@@ -2183,10 +2183,10 @@ var bookmarkedRecipeRawData = [
     ]
   },
   {
-    'title': 'Meats and Vegetables Bowl.',
+    'title': 'Planta de pimenton con la mancha bacteria',
     'photo': 'assets/images/list6.jpg',
-    'calories': '1450 Cal',
-    'time': '120 min',
+    'calories': 'Resultado: Enferma',
+    'time': '',
     'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     'ingridients': [
       {
