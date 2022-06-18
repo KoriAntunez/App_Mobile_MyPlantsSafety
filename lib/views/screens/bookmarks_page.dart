@@ -23,7 +23,7 @@ class _BookmarksPageState extends State<BookmarksPage> {
         backgroundColor: AppColor.primary,
         centerTitle: false,
         elevation: 0,
-        title: Text('Bookmarks', style: TextStyle(fontFamily: 'inter', fontWeight: FontWeight.w400, fontSize: 16)),
+        title: Text('Mis plantas', style: TextStyle(fontFamily: 'inter', fontWeight: FontWeight.w400, fontSize: 16)),
       ),
       body: ListView(
         shrinkWrap: true,
