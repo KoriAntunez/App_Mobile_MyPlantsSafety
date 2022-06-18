@@ -11,6 +11,11 @@ import 'package:hungry/views/widgets/popular_recipe_card.dart';
 import 'package:hungry/views/widgets/recommendation_recipe_card.dart';
 // Agregado
 import 'package:hungry/views/widgets/modals/options_modal.dart';
+// Para la cámara
+import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:camera/camera.dart';
+import 'package:hungry/views/widgets/camara_app.dart';
 
 class ExplorePage extends StatelessWidget {
   final Recipe popularRecipe = RecipeHelper.popularRecipe;
@@ -46,7 +51,7 @@ class ExplorePage extends StatelessWidget {
         shrinkWrap: true,
         physics: BouncingScrollPhysics(),
         children: [
-          // Section 1 - Category
+          // Section 1 - Plants Category
           Container(
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             width: MediaQuery.of(context).size.width,
@@ -67,7 +72,7 @@ class ExplorePage extends StatelessWidget {
               ],
             ),
           ),
-          // Section 2 - Button Option take a photo
+          // Section 2 - Take a photo
           Container(
             margin: EdgeInsets.only(top: 32, bottom: 6, left: 16, right: 16),
             width: MediaQuery.of(context).size.width,
@@ -103,7 +108,9 @@ class ExplorePage extends StatelessWidget {
                             icon: Icons.camera_alt,
                             color: AppColor.primary,
                             text: 'Cámara',
-                            onPressed: () {},
+                            onPressed: () {
+                              CameraApp();
+                            },
                           ),
                           OptionsModal(
                             icon: Icons.photo,
