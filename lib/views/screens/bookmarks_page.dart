@@ -59,7 +59,7 @@ class _BookmarksPageState extends State<BookmarksPage> {
                           maxLines: 1,
                           textInputAction: TextInputAction.search,
                           decoration: InputDecoration(
-                            hintText: 'What do you want to eat?',
+                            hintText: 'Buscar Planta',
                             hintStyle: TextStyle(color: Colors.white.withOpacity(0.2)),
                             prefixIconConstraints: BoxConstraints(maxHeight: 20),
                             contentPadding: EdgeInsets.symmetric(horizontal: 17),

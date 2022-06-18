@@ -30,7 +30,7 @@ class SearchFilterModal extends StatelessWidget {
                 ),
               ),
               Text(
-                'Sort by',
+                'Ordenar Por',
                 style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, fontFamily: 'inter'),
               ),
               GestureDetector(
@@ -42,7 +42,7 @@ class SearchFilterModal extends StatelessWidget {
                   color: Colors.transparent,
                   alignment: Alignment.center,
                   padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: Text('Cancel', style: TextStyle(color: Colors.grey)),
+                  child: Text('Cancelar', style: TextStyle(color: Colors.grey)),
                 ),
               ),
             ],
@@ -56,7 +56,7 @@ class SearchFilterModal extends StatelessWidget {
             textColor: Colors.grey,
             child: ListTile(
               selected: true,
-              title: Text('Newest', style: TextStyle(fontWeight: FontWeight.w600)),
+              title: Text('Recientes', style: TextStyle(fontWeight: FontWeight.w600)),
               contentPadding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
             ),
           ),
@@ -69,7 +69,7 @@ class SearchFilterModal extends StatelessWidget {
             textColor: Colors.grey,
             child: ListTile(
               selected: false,
-              title: Text('Oldest', style: TextStyle(fontWeight: FontWeight.w600)),
+              title: Text('Antiguos', style: TextStyle(fontWeight: FontWeight.w600)),
               contentPadding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
             ),
           ),
@@ -82,7 +82,7 @@ class SearchFilterModal extends StatelessWidget {
             textColor: Colors.grey,
             child: ListTile(
               selected: false,
-              title: Text('Popular', style: TextStyle(fontWeight: FontWeight.w600)),
+              title: Text('Favoritos', style: TextStyle(fontWeight: FontWeight.w600)),
               contentPadding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
             ),
           ),
