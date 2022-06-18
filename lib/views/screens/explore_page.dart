@@ -65,7 +65,7 @@ class _ExplorePageState extends State<ExplorePage> {
         brightness: Brightness.dark,
         elevation: 0,
         centerTitle: false,
-        title: Text('Explore Recipe',
+        title: Text('Diagnostica el estado de tu planta',
             style: TextStyle(
                 fontFamily: 'inter',
                 fontWeight: FontWeight.w400,
