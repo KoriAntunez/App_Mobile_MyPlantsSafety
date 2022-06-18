@@ -1,5 +1,5 @@
 import 'dart:ui';
-
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hungry/models/core/recipe.dart';
@@ -16,9 +16,44 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:camera/camera.dart';
 import 'package:hungry/views/widgets/camara_app.dart';
+// Plugin cámara
+import 'package:image_picker/image_picker.dart';
+import 'package:flutter/services.dart';
 
-class ExplorePage extends StatelessWidget {
+class ExplorePage extends StatefulWidget {
+  @override
+  State<ExplorePage> createState() => _ExplorePageState();
+}
+
+class _ExplorePageState extends State<ExplorePage> {
+  // Other method
+  File imageFile;
+  //
+  /**Plugin Camara**/
+  // Create a new object
+  File _image;
+  // Create and instanciate our ImagePicker object
+  final imagePicker = ImagePicker();
+  // Function to get the image from the camera
+  Future getImage(ImageSource source) async {
+    try {
+      final image = await imagePicker.pickImage(source: source);
+      setState(() {
+        // Asign the image path to our image File
+        if (_image != null) {
+          _image = File(image.path);
+        } else {
+          print('No selecciono foto');
+        }
+      });
+    } on PlatformException catch (e) {
+      print('Failed to pick image: $e');
+    }
+  }
+
+  /****/
   final Recipe popularRecipe = RecipeHelper.popularRecipe;
+
   final List<Recipe> sweetFoodRecommendationRecipe =
       RecipeHelper.sweetFoodRecommendationRecipe;
 
@@ -72,6 +107,88 @@ class ExplorePage extends StatelessWidget {
               ],
             ),
           ),
+          // Section 2
+          Container(
+            margin: EdgeInsets.only(top: 32, bottom: 6, left: 16, right: 16),
+            width: MediaQuery.of(context).size.width,
+            height: 60,
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: OptionsModal(
+                        icon: Icons.camera_alt,
+                        color: AppColor.primary,
+                        text: 'Cámara',
+                        onPressed: () {
+                          //CameraApp();
+                          getImage(ImageSource.camera);
+                        },
+                      ),
+                    ),
+                    SizedBox(width: 20),
+                    Expanded(
+                      child: OptionsModal(
+                        icon: Icons.photo,
+                        color: AppColor.primary,
+                        text: 'Galería',
+                        onPressed: () {
+                          getImage(ImageSource.gallery);
+                        },
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+
+          // Section Resultados
+          imageFile != null
+              ? Container(
+                  height: 280,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    // Aquí se muestra la imagen
+                    image: DecorationImage(image: FileImage(imageFile)),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  /*
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Resultados',
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'inter'),
+                    ),
+                    _image != null
+                        ? Image.file(
+                            _image,
+                            width: 160,
+                            height: 160,
+                            fit: BoxFit.cover,
+                          )
+                        : FlutterLogo(
+                            size: 160,
+                          ),
+                    const SizedBox(height: 24),
+                    Text('Image Picker', style: TextStyle(fontSize: 48)),
+                  ]),*/
+                )
+              : Container(
+                  height: 280,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    // Imagen por defecto
+                    image: DecorationImage(
+                        image: AssetImage('assets/images/select-image.png')),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                ),
           // Section 2 - Take a photo
           Container(
             margin: EdgeInsets.only(top: 32, bottom: 6, left: 16, right: 16),
@@ -84,7 +201,7 @@ class ExplorePage extends StatelessWidget {
               //Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => OptionsModal()));
               //},
               child: Text(
-                'Toma una foto',
+                'Diagnosticar',
                 style: TextStyle(
                     color: AppColor.secondary,
                     fontSize: 16,
@@ -109,14 +226,18 @@ class ExplorePage extends StatelessWidget {
                             color: AppColor.primary,
                             text: 'Cámara',
                             onPressed: () {
-                              CameraApp();
+                              //CameraApp();
+                              //getImage(ImageSource.camera);
+                              getImages(source: ImageSource.camera);
                             },
                           ),
                           OptionsModal(
                             icon: Icons.photo,
                             color: AppColor.primary,
                             text: 'Galería',
-                            onPressed: () {},
+                            onPressed: () {
+                              getImage(ImageSource.gallery);
+                            },
                           ),
                         ],
                       );
@@ -236,5 +357,15 @@ class ExplorePage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  // Other method
+  void getImages({ImageSource source}) async {
+    final file = await ImagePicker().pickImage(source: source);
+    if (file.path != null) {
+      setState(() {
+        imageFile = File(file.path);
+      });
+    }
   }
 }
