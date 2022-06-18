@@ -12,7 +12,7 @@ class ProfilePage extends StatelessWidget {
         backgroundColor: AppColor.primary,
         elevation: 0,
         centerTitle: true,
-        title: Text('My Profile', style: TextStyle(fontFamily: 'inter', fontWeight: FontWeight.w400, fontSize: 16)),
+        title: Text('Mi Perfil', style: TextStyle(fontFamily: 'inter', fontWeight: FontWeight.w400, fontSize: 16)),
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios, color: Colors.white),
           onPressed: () {
@@ -23,7 +23,7 @@ class ProfilePage extends StatelessWidget {
           TextButton(
             onPressed: () {},
             child: Text(
-              'Edit',
+              'Editar',
               style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w600),
             ),
             style: TextButton.styleFrom(primary: Colors.white, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100))),
@@ -60,7 +60,7 @@ class ProfilePage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('Change Profile Picture', style: TextStyle(fontFamily: 'inter', fontWeight: FontWeight.w600, color: Colors.white)),
+                      Text('Cambiar imagen de perfil', style: TextStyle(fontFamily: 'inter', fontWeight: FontWeight.w600, color: Colors.white)),
                       SizedBox(width: 8),
                       SvgPicture.asset('assets/icons/camera.svg', color: Colors.white),
                     ],
@@ -80,22 +80,16 @@ class ProfilePage extends StatelessWidget {
                 UserInfoTile(
                   margin: EdgeInsets.only(bottom: 16),
                   label: 'Email',
-                  value: 'reinazahradummy@gmail.com',
+                  value: 'reinaGP@gmail.com',
                 ),
                 UserInfoTile(
                   margin: EdgeInsets.only(bottom: 16),
-                  label: 'Full Name',
-                  value: 'Reina Zahra Azizah',
+                  label: 'Nombres y Apellidos',
+                  value: 'Reina Gonzales Pérez',
                 ),
                 UserInfoTile(
                   margin: EdgeInsets.only(bottom: 16),
-                  label: 'Subscription Type',
-                  value: 'Premium Subscription',
-                  valueBackground: AppColor.secondary,
-                ),
-                UserInfoTile(
-                  margin: EdgeInsets.only(bottom: 16),
-                  label: 'Subscription Time',
+                  label: 'Fecha de suscripción',
                   value: 'Until 22 Oct 2021',
                 ),
               ],

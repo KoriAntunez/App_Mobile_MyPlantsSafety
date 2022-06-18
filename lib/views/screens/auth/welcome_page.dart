@@ -31,9 +31,9 @@ class WelcomePage extends StatelessWidget {
                     children: [
                       Padding(
                         padding: EdgeInsets.only(bottom: 16),
-                        child: Text('Hungry?', style: TextStyle(fontFamily: 'inter', fontWeight: FontWeight.w700, fontSize: 32, color: Colors.white)),
+                        child: Text('MyPlantsSafety', style: TextStyle(fontFamily: 'inter', fontWeight: FontWeight.w700, fontSize: 32, color: Colors.white)),
                       ),
-                      Text("Help you when you're hungry", style: TextStyle(color: Colors.white)),
+                      Text("Cuida tus plantas, cuida tu vida", style: TextStyle(color: Colors.white)),
                     ],
                   ),
                   Column(
@@ -45,7 +45,7 @@ class WelcomePage extends StatelessWidget {
                         width: MediaQuery.of(context).size.width,
                         height: 60,
                         child: ElevatedButton(
-                          child: Text('Get Started', style: TextStyle(color: AppColor.secondary, fontSize: 16, fontWeight: FontWeight.w600, fontFamily: 'inter')),
+                          child: Text('Registrarse', style: TextStyle(color: AppColor.secondary, fontSize: 16, fontWeight: FontWeight.w600, fontFamily: 'inter')),
                           onPressed: () {
                             showModalBottomSheet(
                               context: context,
@@ -94,7 +94,7 @@ class WelcomePage extends StatelessWidget {
                         child: RichText(
                           textAlign: TextAlign.center,
                           text: TextSpan(
-                            text: 'By joining Hungry, you agree to our ',
+                            text: 'By MyPlantsSafety ',
                             style: TextStyle(color: Colors.white.withOpacity(0.6), height: 150 / 100),
                             children: [
                               TextSpan(
