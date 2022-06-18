@@ -214,6 +214,7 @@ class _ExplorePageState extends State<ExplorePage> {
                 primary: AppColor.primarySoft,
               ),
               onPressed: () {
+                /*
                 showDialog(
                     context: context,
                     builder: (BuildContext context) {
@@ -308,50 +309,8 @@ class _ExplorePageState extends State<ExplorePage> {
                         ],
                       ); */
                     });
+              */
               },
-            ),
-          ),
-
-          // Section 3 - Popular Card
-          Container(
-            width: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-            child: PopularRecipeCard(
-              data: popularRecipe,
-            ),
-          ),
-          Container(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Header
-                Container(
-                  margin: EdgeInsets.only(bottom: 16),
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    'Todays sweet food to make your day happy ......',
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                ),
-                // Content
-                Container(
-                  height: 174,
-                  child: ListView.separated(
-                    shrinkWrap: true,
-                    physics: BouncingScrollPhysics(),
-                    scrollDirection: Axis.horizontal,
-                    itemCount: sweetFoodRecommendationRecipe.length,
-                    padding: EdgeInsets.symmetric(horizontal: 16),
-                    separatorBuilder: (context, index) {
-                      return SizedBox(width: 16);
-                    },
-                    itemBuilder: (context, index) {
-                      return RecommendationRecipeCard(
-                          data: sweetFoodRecommendationRecipe[index]);
-                    },
-                  ),
-                )
-              ],
             ),
           ),
         ],
