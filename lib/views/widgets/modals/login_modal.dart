@@ -3,8 +3,23 @@ import 'package:hungry/views/screens/page_switcher.dart';
 import 'package:hungry/views/utils/AppColor.dart';
 import 'package:hungry/views/widgets/custom_text_field.dart';
 import 'package:hungry/views/screens/bookmarks_page.dart';
+import 'package:hungry/api/api_service.dart';
+import 'package:hungry/models/core/login_model.dart';
 
-class LoginModal extends StatelessWidget {
+class LoginModal extends StatefulWidget {
+  @override
+  _LoginModal createState() => _LoginModal();
+}
+
+class _LoginModal extends State<LoginModal>
+{
+  LoginRequestModel loginRequestModel;
+  @override
+  void initState() {
+    super.initState();
+    loginRequestModel = new LoginRequestModel();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Wrap(
