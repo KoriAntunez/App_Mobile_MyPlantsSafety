@@ -3,6 +3,8 @@ import 'package:hungry/views/screens/page_switcher.dart';
 import 'package:hungry/views/utils/AppColor.dart';
 import 'package:hungry/views/widgets/custom_text_field.dart';
 import 'package:hungry/views/widgets/modals/login_modal.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class RegisterModal extends StatefulWidget {
   @override
@@ -101,6 +103,18 @@ class _RegisterModalState extends State<RegisterModal> {
                     final form = _formKey.currentState;
                     if (form.validate()) {
                       Navigator.of(context).pop();
+                      showModalBottomSheet(
+                        context: context,
+                        backgroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20),
+                                topRight: Radius.circular(20))),
+                        isScrollControlled: true,
+                        builder: (context) {
+                          return LoginModal();
+                        },
+                      );
                     }
                   },
                   child: Text('Registrar',
@@ -203,4 +217,35 @@ class _RegisterModalState extends State<RegisterModal> {
     }
     return null;
   }
+/*
+  register(String email, contact, pass, conpass) async {
+    Map data = {
+      'Email': email,
+      'Nombre': contact,
+      'Password': pass,
+      'RetypePassword': conpass,
+    };
+    print(data);
+
+    String body = json.encode(data);
+    var url = Uri.parse('Your url here');
+    var response = await http.post(
+      url,
+      body: body,
+      headers: {
+        "Content-Type": "application/json",
+        "accept": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      },
+    );
+    print(response.body);
+    print(response.statusCode);
+    if (response.statusCode == 200) {
+      //Or put here your next screen using Navigator.push() method
+      print('success');
+    } else {
+      print('error');
+    }
+  }
+  */
 }
