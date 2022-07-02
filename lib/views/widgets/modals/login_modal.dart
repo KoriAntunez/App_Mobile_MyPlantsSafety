@@ -3,14 +3,20 @@ import 'package:hungry/views/screens/page_switcher.dart';
 import 'package:hungry/views/utils/AppColor.dart';
 import 'package:hungry/views/widgets/custom_text_field.dart';
 import 'package:hungry/views/screens/bookmarks_page.dart';
+<<<<<<< Updated upstream
 import 'package:hungry/api/api_service.dart';
 import 'package:hungry/models/core/login_model.dart';
 
+=======
+import 'package:http/http.dart' as http;
+import 'dart:async';
+>>>>>>> Stashed changes
 class LoginModal extends StatefulWidget {
   @override
   _LoginModal createState() => _LoginModal();
 }
 
+<<<<<<< Updated upstream
 class _LoginModal extends State<LoginModal>
 {
   LoginRequestModel loginRequestModel;
@@ -18,6 +24,46 @@ class _LoginModal extends State<LoginModal>
   void initState() {
     super.initState();
     loginRequestModel = new LoginRequestModel();
+=======
+class _LoginModalState extends State<LoginModal> {
+  final _formKey = GlobalKey<FormState>();
+
+  String usu= "12@12.com";
+  String pass="123";
+
+  void ingresar(usu, pass) async{
+    try{
+      var response= await http.post(Uri.parse("https://localhost:44356/api/Usuario/login"),
+        body:{
+        "Email": usu,
+          "Password": pass
+        }).timeout(const Duration(seconds: 90));
+      if(response.body!=""){
+        print("MEnsaje de exito");
+        Navigator.of(this.context).pushReplacement(MaterialPageRoute(
+            builder: (context) => PageSwitcher()));}
+      else{
+        print("usuario incorrecto");
+      }
+    }on TimeoutException catch(e){
+      print("Demora la conexion");
+    }on Error catch(e){
+      print("Http error");
+    }
+  }
+
+  void _onFormSubmit() {
+    final form = _formKey.currentState;
+    if (form.validate()) {
+      showDialog(
+        context: this.context,
+        builder: (context) => AlertDialog(
+          title: Text('Mensaje'),
+          content: Text('Form submitted'),
+        ),
+      );
+    }
+>>>>>>> Stashed changes
   }
 
   @override
@@ -61,8 +107,19 @@ class _LoginModal extends State<LoginModal>
                 height: 60,
                 child: ElevatedButton(
                   onPressed: () {
+<<<<<<< Updated upstream
                     Navigator.of(context).pop();
                     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => PageSwitcher()));
+=======
+                    //_onFormSubmit();
+                    final form = _formKey.currentState;
+                    if (form.validate()) {
+                      ingresar(usu,pass);
+                      Navigator.of(context).pop();
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => PageSwitcher()));
+                    }
+>>>>>>> Stashed changes
                     //Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => BookmarksPage()));
                   },
                   child: Text('Login', style: TextStyle(color: AppColor.secondary, fontSize: 16, fontWeight: FontWeight.w600, fontFamily: 'inter')),
