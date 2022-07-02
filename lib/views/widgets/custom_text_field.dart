@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hungry/views/utils/AppColor.dart';
 
 class CustomTextField extends StatelessWidget {
+  final Function validator;
   final String title;
   final String hint;
   final TextEditingController controller;
@@ -10,6 +11,7 @@ class CustomTextField extends StatelessWidget {
   final EdgeInsetsGeometry margin;
 
   CustomTextField({
+    @required this.validator,
     @required this.title,
     @required this.hint,
     this.controller,
@@ -53,6 +55,8 @@ class CustomTextField extends StatelessWidget {
                 contentPadding: EdgeInsets.only(left: 16),
                 border: InputBorder.none,
               ),
+              validator: validator,
+              /*
               validator: (val) {
                 if (title == "Email") {
                   if (val.isEmpty) {
@@ -77,7 +81,29 @@ class CustomTextField extends StatelessWidget {
                     }
                   }
                 }
-              },
+                if (title == "Nombre y Apellidos") {
+                  if (val.isEmpty) {
+                    return 'Ingrese su nombre y apellidos';
+                  } else {
+                    if (!RegExp(r'(^[a-zA-Z ]*$)').hasMatch(val)) {
+                      return 'El nombre solo debe contener letras';
+                    } else {
+                      return null;
+                    }
+                  }
+                }
+                if (title == "Repetir Password") {
+                  if (val.isEmpty) {
+                    return 'Ingrese una contraseña';
+                  } else {
+                    if (!RegExp('^.{8}').hasMatch(val)) {
+                      return 'Ingrese una contraseña válida';
+                    } else {
+                      return null;
+                    }
+                  }
+                }
+              },*/
             ),
           ),
         ],

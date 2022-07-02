@@ -5,6 +5,7 @@ import 'package:hungry/views/screens/page_switcher.dart';
 import 'package:hungry/views/utils/AppColor.dart';
 import 'package:hungry/views/widgets/custom_text_field.dart';
 import 'package:hungry/views/screens/bookmarks_page.dart';
+import 'package:hungry/views/widgets/modals/register_modal.dart';
 
 class LoginModal extends StatefulWidget {
   @override
@@ -13,6 +14,8 @@ class LoginModal extends StatefulWidget {
 
 class _LoginModalState extends State<LoginModal> {
   final _formKey = GlobalKey<FormState>();
+  TextEditingController emailCtrl = new TextEditingController();
+  TextEditingController passwordCtrl = new TextEditingController();
 
   void _onFormSubmit() {
     final form = _formKey.currentState;
@@ -74,13 +77,17 @@ class _LoginModalState extends State<LoginModal> {
                 child: Column(
                   children: [
                     CustomTextField(
+                      controller: emailCtrl,
                       title: 'Email',
                       hint: 'youremail@email.com',
+                      validator: validateEmail,
                     ),
                     CustomTextField(
+                        controller: passwordCtrl,
                         title: 'Password',
                         hint: '**********',
                         obsecureText: true,
+                        validator: validatePassword,
                         margin: EdgeInsets.only(top: 16)),
                   ],
                 ),
@@ -116,14 +123,29 @@ class _LoginModalState extends State<LoginModal> {
                 ),
               ),
 
+              // Login textbutton
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  showModalBottomSheet(
+                    context: context,
+                    backgroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20),
+                            topRight: Radius.circular(20))),
+                    isScrollControlled: true,
+                    builder: (context) {
+                      return RegisterModal();
+                    },
+                  );
+                },
                 style: TextButton.styleFrom(
                   primary: Colors.white,
                 ),
                 child: RichText(
                   text: TextSpan(
-                    text: 'Olvidaste tu contraseña? ',
+                    text: 'Aún no tienes una cuenta? ',
                     style: TextStyle(color: Colors.grey),
                     children: [
                       TextSpan(
@@ -132,7 +154,7 @@ class _LoginModalState extends State<LoginModal> {
                             fontWeight: FontWeight.w700,
                             fontFamily: 'inter',
                           ),
-                          text: 'Reset')
+                          text: 'Registrarse')
                     ],
                   ),
                 ),
@@ -142,5 +164,29 @@ class _LoginModalState extends State<LoginModal> {
         )
       ],
     );
+  }
+
+  String validateEmail(String value) {
+    String pattern = r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}';
+    RegExp regExp = new RegExp(pattern);
+    if (value.length == 0) {
+      return "El correo es necesario";
+    } else if (!regExp.hasMatch(value)) {
+      return "Correo invalido";
+    } else {
+      return null;
+    }
+  }
+
+  String validatePassword(String value) {
+    String pattern = '^.{8}';
+    RegExp regExp = new RegExp(pattern);
+    if (value.length == 0) {
+      return "La contraseña es necesaria";
+    } else if (!regExp.hasMatch(value)) {
+      return "Ingrese una contraseña de 8 caracteres";
+    } else {
+      return null;
+    }
   }
 }

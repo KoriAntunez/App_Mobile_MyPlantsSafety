@@ -4,6 +4,7 @@ import 'package:hungry/views/screens/explore_page.dart';
 import 'package:hungry/views/screens/home_page.dart';
 import 'package:hungry/views/utils/AppColor.dart';
 import 'package:hungry/views/widgets/custom_bottom_navigation_bar.dart';
+import 'package:hungry/views/widgets/modals/login_modal.dart';
 
 class PageSwitcher extends StatefulWidget {
   @override
@@ -33,7 +34,8 @@ class _PageSwitcherState extends State<PageSwitcher> {
           BottomGradientWidget(),
         ],
       ),
-      bottomNavigationBar: CustomBottomNavigationBar(onItemTapped: _onItemTapped, selectedIndex: _selectedIndex),
+      bottomNavigationBar: CustomBottomNavigationBar(
+          onItemTapped: _onItemTapped, selectedIndex: _selectedIndex),
     );
   }
 }

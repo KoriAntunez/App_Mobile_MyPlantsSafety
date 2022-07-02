@@ -4,7 +4,18 @@ import 'package:hungry/views/utils/AppColor.dart';
 import 'package:hungry/views/widgets/custom_text_field.dart';
 import 'package:hungry/views/widgets/modals/login_modal.dart';
 
-class RegisterModal extends StatelessWidget {
+class RegisterModal extends StatefulWidget {
+  @override
+  State<RegisterModal> createState() => _RegisterModalState();
+}
+
+class _RegisterModalState extends State<RegisterModal> {
+  final _formKey = GlobalKey<FormState>();
+  TextEditingController nameCtrl = new TextEditingController();
+  TextEditingController emailCtrl = new TextEditingController();
+  TextEditingController passwordCtrl = new TextEditingController();
+  TextEditingController repeatPassCtrl = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Wrap(
@@ -47,21 +58,39 @@ class RegisterModal extends StatelessWidget {
                 ),
               ),
               // Form
-              CustomTextField(title: 'Email', hint: 'youremail@email.com'),
-              CustomTextField(
-                  title: 'Nombre y Apellidos',
-                  hint: 'Nombre completo',
-                  margin: EdgeInsets.only(top: 16)),
-              CustomTextField(
-                  title: 'Password',
-                  hint: '**********',
-                  obsecureText: true,
-                  margin: EdgeInsets.only(top: 16)),
-              CustomTextField(
-                  title: 'Repetir Password',
-                  hint: '**********',
-                  obsecureText: true,
-                  margin: EdgeInsets.only(top: 16)),
+              Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      CustomTextField(
+                        controller: emailCtrl,
+                        title: 'Email',
+                        hint: 'youremail@email.com',
+                        validator: validateEmail,
+                      ),
+                      CustomTextField(
+                          controller: nameCtrl,
+                          title: 'Nombre y Apellidos',
+                          hint: 'Nombre completo',
+                          validator: validateName,
+                          margin: EdgeInsets.only(top: 16)),
+                      CustomTextField(
+                          controller: passwordCtrl,
+                          title: 'Password',
+                          hint: '**********',
+                          validator: validatePassword,
+                          obsecureText: true,
+                          margin: EdgeInsets.only(top: 16)),
+                      CustomTextField(
+                          controller: repeatPassCtrl,
+                          title: 'Repetir Password',
+                          hint: '**********',
+                          validator: validateRepeatPassword,
+                          obsecureText: true,
+                          margin: EdgeInsets.only(top: 16)),
+                    ],
+                  )),
+
               // Register Button
               Container(
                 margin: EdgeInsets.only(top: 32, bottom: 6),
@@ -69,9 +98,10 @@ class RegisterModal extends StatelessWidget {
                 height: 60,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.of(context).pop();
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => PageSwitcher()));
+                    final form = _formKey.currentState;
+                    if (form.validate()) {
+                      Navigator.of(context).pop();
+                    }
                   },
                   child: Text('Registrar',
                       style: TextStyle(
@@ -127,5 +157,50 @@ class RegisterModal extends StatelessWidget {
         )
       ],
     );
+  }
+
+  String validateName(String value) {
+    String pattern = r'(^[a-zA-Z ]*$)';
+    RegExp regExp = new RegExp(pattern);
+    if (value.length == 0) {
+      return "El nombre es necesario";
+    } else if (!regExp.hasMatch(value)) {
+      return "El nombre debe de ser a-z y A-Z";
+    }
+    return null;
+  }
+
+  String validateEmail(String value) {
+    String pattern = r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}';
+    RegExp regExp = new RegExp(pattern);
+    if (value.length == 0) {
+      return "El correo es necesario";
+    } else if (!regExp.hasMatch(value)) {
+      return "Correo invalido";
+    } else {
+      return null;
+    }
+  }
+
+  String validatePassword(String value) {
+    String pattern = '^.{8}';
+    RegExp regExp = new RegExp(pattern);
+    if (value.length == 0) {
+      return "La contraseña es necesaria";
+    } else if (!regExp.hasMatch(value)) {
+      return "Ingrese una contraseña de 8 caracteres";
+    } else {
+      return null;
+    }
+  }
+
+  String validateRepeatPassword(String value) {
+    print("valorrr $value passsword ${passwordCtrl.text}");
+    if (value.length == 0) {
+      return "La contraseña es necesaria";
+    } else if (value != passwordCtrl.text) {
+      return "Las contraseñas no coinciden";
+    }
+    return null;
   }
 }
