@@ -4,7 +4,6 @@ import 'package:hungry/views/utils/AppColor.dart';
 class CustomTextField extends StatelessWidget {
   final String title;
   final String hint;
-  final String validationMessage;
   final TextEditingController controller;
   final bool obsecureText;
   final EdgeInsetsGeometry padding;
@@ -13,7 +12,6 @@ class CustomTextField extends StatelessWidget {
   CustomTextField({
     @required this.title,
     @required this.hint,
-    @required this.validationMessage,
     this.controller,
     this.obsecureText = false,
     this.padding,
@@ -58,11 +56,11 @@ class CustomTextField extends StatelessWidget {
               validator: (val) {
                 if (title == "Email") {
                   if (val.isEmpty) {
-                    return '$validationMessage';
+                    return 'Ingrese un email';
                   } else {
                     if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}')
                         .hasMatch(val)) {
-                      return '$validationMessage válido';
+                      return 'Ingrese válido';
                     } else {
                       return null;
                     }
@@ -70,10 +68,10 @@ class CustomTextField extends StatelessWidget {
                 }
                 if (title == "Password") {
                   if (val.isEmpty) {
-                    return '$validationMessage';
+                    return 'Ingrese una contraseña';
                   } else {
                     if (!RegExp('^.{8}').hasMatch(val)) {
-                      return '$validationMessage válido';
+                      return 'Ingrese una contraseña válida';
                     } else {
                       return null;
                     }

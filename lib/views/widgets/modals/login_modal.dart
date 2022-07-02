@@ -76,12 +76,10 @@ class _LoginModalState extends State<LoginModal> {
                     CustomTextField(
                       title: 'Email',
                       hint: 'youremail@email.com',
-                      validationMessage: 'Ingrese un email',
                     ),
                     CustomTextField(
                         title: 'Password',
                         hint: '**********',
-                        validationMessage: 'Ingrese un password',
                         obsecureText: true,
                         margin: EdgeInsets.only(top: 16)),
                   ],
