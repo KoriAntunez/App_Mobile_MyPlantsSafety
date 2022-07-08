@@ -1,6 +1,8 @@
+import 'dart:convert';
 import 'dart:js';
 
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:hungry/views/screens/page_switcher.dart';
 import 'package:hungry/views/utils/AppColor.dart';
 import 'package:hungry/views/widgets/custom_text_field.dart';
@@ -27,6 +29,22 @@ class _LoginModalState extends State<LoginModal> {
           content: Text('Form submitted'),
         ),
       );
+    }
+  }
+
+  void login(String email, String password) async {
+    try {
+      Response response = await post(Uri.parse('https://reqres.in/api/login'),
+          body: {'email': email, 'password': password});
+      if (response.statusCode == 200) {
+        var data = json.decode(response.body.toString());
+        print(data['token']);
+        print('Login successful');
+      } else {
+        print('filed');
+      }
+    } catch (e) {
+      print(e.toString());
     }
   }
 
@@ -103,6 +121,8 @@ class _LoginModalState extends State<LoginModal> {
                     //_onFormSubmit();
                     final form = _formKey.currentState;
                     if (form.validate()) {
+                      login(emailCtrl.text.toString(),
+                          passwordCtrl.text.toString());
                       Navigator.of(context).pop();
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
                           builder: (context) => PageSwitcher()));
