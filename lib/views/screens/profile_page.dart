@@ -2,8 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hungry/views/utils/AppColor.dart';
 import 'package:hungry/views/widgets/user_info_tile.dart';
+import 'package:hungry/views/widgets/custom_text_field.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,7 +18,11 @@ class ProfilePage extends StatelessWidget {
         backgroundColor: AppColor.primary,
         elevation: 0,
         centerTitle: true,
-        title: Text('Mi Perfil', style: TextStyle(fontFamily: 'inter', fontWeight: FontWeight.w400, fontSize: 16)),
+        title: Text('Mi Perfil',
+            style: TextStyle(
+                fontFamily: 'inter',
+                fontWeight: FontWeight.w400,
+                fontSize: 16)),
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios, color: Colors.white),
           onPressed: () {
@@ -24,9 +34,15 @@ class ProfilePage extends StatelessWidget {
             onPressed: () {},
             child: Text(
               'Editar',
-              style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w600),
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600),
             ),
-            style: TextButton.styleFrom(primary: Colors.white, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100))),
+            style: TextButton.styleFrom(
+                primary: Colors.white,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(100))),
           ),
         ],
       ),
@@ -54,15 +70,22 @@ class ProfilePage extends StatelessWidget {
                       color: Colors.grey,
                       borderRadius: BorderRadius.circular(100),
                       // Profile Picture
-                      image: DecorationImage(image: AssetImage('assets/images/profile.jpg'), fit: BoxFit.cover),
+                      image: DecorationImage(
+                          image: AssetImage('assets/images/profile.jpg'),
+                          fit: BoxFit.cover),
                     ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('Cambiar imagen de perfil', style: TextStyle(fontFamily: 'inter', fontWeight: FontWeight.w600, color: Colors.white)),
+                      Text('Cambiar imagen de perfil',
+                          style: TextStyle(
+                              fontFamily: 'inter',
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white)),
                       SizedBox(width: 8),
-                      SvgPicture.asset('assets/icons/camera.svg', color: Colors.white),
+                      SvgPicture.asset('assets/icons/camera.svg',
+                          color: Colors.white),
                     ],
                   )
                 ],
@@ -73,30 +96,49 @@ class ProfilePage extends StatelessWidget {
           Container(
             margin: EdgeInsets.only(top: 24),
             width: MediaQuery.of(context).size.width,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                UserInfoTile(
-                  margin: EdgeInsets.only(bottom: 16),
-                  label: 'Email',
-                  value: 'reinaGP@gmail.com',
-                ),
-                UserInfoTile(
-                  margin: EdgeInsets.only(bottom: 16),
-                  label: 'Nombres y Apellidos',
-                  value: 'Reina Gonzales Pérez',
-                ),
-                UserInfoTile(
-                  margin: EdgeInsets.only(bottom: 16),
-                  label: 'Fecha de suscripción',
-                  value: 'Until 22 Oct 2021',
-                ),
-              ],
+            child: Form(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  UserInfoTile(
+                    margin: EdgeInsets.only(bottom: 16),
+                    label: 'Email',
+                    value: 'reinaGP@gmail.com',
+                  ),
+                  CustomTextField(
+                    title: 'Email',
+                    hint: 'youremail@email.com',
+                    validator: validateEmail,
+                  ),
+                  UserInfoTile(
+                    margin: EdgeInsets.only(bottom: 16),
+                    label: 'Nombres y Apellidos',
+                    value: 'Reina Gonzales Pérez',
+                  ),
+                  UserInfoTile(
+                    margin: EdgeInsets.only(bottom: 16),
+                    label: 'Fecha de suscripción',
+                    value: 'Until 22 Oct 2021',
+                  ),
+                ],
+              ),
             ),
           )
         ],
       ),
     );
+  }
+
+  String validateEmail(String value) {
+    String pattern = r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}';
+    RegExp regExp = new RegExp(pattern);
+    if (value.length == 0) {
+      return "El correo es necesario";
+    } else if (!regExp.hasMatch(value)) {
+      return "Correo invalido";
+    } else {
+      return null;
+    }
   }
 }
