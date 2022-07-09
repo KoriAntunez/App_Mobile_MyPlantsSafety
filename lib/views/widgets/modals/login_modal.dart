@@ -2,13 +2,14 @@ import 'dart:convert';
 import 'dart:js';
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
+import 'package:http/http.dart' as http;
 import 'package:hungry/views/screens/page_switcher.dart';
 import 'package:hungry/views/utils/AppColor.dart';
 import 'package:hungry/views/widgets/custom_text_field.dart';
 import 'package:hungry/views/screens/bookmarks_page.dart';
 import 'package:hungry/views/widgets/modals/register_modal.dart';
 import 'package:hungry/models/core/login_model.dart';
+import 'package:hungry/models/core/usuarioLogin.dart';
 
 class LoginModal extends StatefulWidget {
   @override
@@ -35,13 +36,18 @@ class _LoginModalState extends State<LoginModal> {
 
   void login(String email, String password) async {
     try {
-      Response response = await post(Uri.parse('https://reqres.in/api/login'),
-          body: {'email': email, 'password': password});
+      http.Response response = await http.post(Uri.parse('https://localhost:44356/api/Usuario/login'),
+          headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',},
+          body: jsonEncode({"id": 0,
+            "nombre": "",
+            "apellidos": "",
+            "email": email,
+            "password": password}),);
       if (response.statusCode == 200) {
-        var data = (json.decode(response.body) as List)
-            .map((i) => LoginModel.fromJson(i))
-            .toList();
-        print(data);
+        var data = jsonDecode(response.body);
+        usuarioLogin users = new usuarioLogin.fromJson(data);
+        print(users.nombre);
         print('Login successful');
       } else {
         print('filed');
