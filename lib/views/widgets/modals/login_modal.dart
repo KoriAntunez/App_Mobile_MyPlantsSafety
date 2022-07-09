@@ -8,6 +8,7 @@ import 'package:hungry/views/utils/AppColor.dart';
 import 'package:hungry/views/widgets/custom_text_field.dart';
 import 'package:hungry/views/screens/bookmarks_page.dart';
 import 'package:hungry/views/widgets/modals/register_modal.dart';
+import 'package:hungry/models/core/login_model.dart';
 
 class LoginModal extends StatefulWidget {
   @override
@@ -37,8 +38,10 @@ class _LoginModalState extends State<LoginModal> {
       Response response = await post(Uri.parse('https://reqres.in/api/login'),
           body: {'email': email, 'password': password});
       if (response.statusCode == 200) {
-        var data = json.decode(response.body.toString());
-        print(data['token']);
+        var data = (json.decode(response.body) as List)
+            .map((i) => LoginModel.fromJson(i))
+            .toList();
+        print(data);
         print('Login successful');
       } else {
         print('filed');
