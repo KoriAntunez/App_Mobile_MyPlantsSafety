@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:hungry/models/core/recipe.dart';
 import 'package:hungry/models/helper/recipe_helper.dart';
-import 'package:hungry/views/screens/delicious_today_page.dart';
-import 'package:hungry/views/screens/newly_posted_page.dart';
-import 'package:hungry/views/screens/profile_page.dart';
-import 'package:hungry/views/screens/search_page.dart';
+import 'package:hungry/plant/ui/screens/delicious_today_page.dart';
+import 'package:hungry/plant/ui/screens/newly_posted_page.dart';
+import 'package:hungry/user/ui/screens/profile_page.dart';
+import 'package:hungry/plant/ui/screens/search_page.dart';
 import 'package:hungry/views/utils/AppColor.dart';
-import 'package:hungry/views/widgets/custom_app_bar.dart';
-import 'package:hungry/views/widgets/dummy_search_bar.dart';
-import 'package:hungry/views/widgets/featured_recipe_card.dart';
-import 'package:hungry/views/widgets/recipe_tile.dart';
-import 'package:hungry/views/widgets/recommendation_recipe_card.dart';
+import 'package:hungry/plant/ui/widgets/custom_app_bar.dart';
+import 'package:hungry/plant/ui/widgets/dummy_search_bar.dart';
+import 'package:hungry/plant/ui/widgets/featured_recipe_card.dart';
+import 'package:hungry/plant/ui/widgets/recipe_tile.dart';
+import 'package:hungry/plant/ui/widgets/recommendation_recipe_card.dart';
 
 class HomePage extends StatelessWidget {
   final List<Recipe> featuredRecipe = RecipeHelper.featuredRecipe;
@@ -20,11 +20,13 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: Text('MyPlantsSafety', style: TextStyle(fontFamily: 'inter', fontWeight: FontWeight.w700)),
+        title: Text('MyPlantsSafety',
+            style: TextStyle(fontFamily: 'inter', fontWeight: FontWeight.w700)),
         showProfilePhoto: true,
         profilePhoto: AssetImage('assets/images/pp.png'),
         profilePhotoOnPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfilePage()));
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => ProfilePage()));
         },
       ),
       body: ListView(
@@ -47,7 +49,8 @@ class HomePage extends StatelessWidget {
                     // Search Bar
                     DummySearchBar(
                       routeTo: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => SearchPage()));
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => SearchPage()));
                       },
                     ),
                     // Delicious Today - Header
@@ -60,14 +63,22 @@ class HomePage extends StatelessWidget {
                         children: [
                           Text(
                             'Plantas registradas hoy',
-                            style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w600, fontFamily: 'inter'),
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                fontFamily: 'inter'),
                           ),
                           TextButton(
                             onPressed: () {
-                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => DeliciousTodayPage()));
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => DeliciousTodayPage()));
                             },
                             child: Text('ver todo'),
-                            style: TextButton.styleFrom(primary: Colors.white, textStyle: TextStyle(fontWeight: FontWeight.w400, fontSize: 14)),
+                            style: TextButton.styleFrom(
+                                primary: Colors.white,
+                                textStyle: TextStyle(
+                                    fontWeight: FontWeight.w400, fontSize: 14)),
                           ),
                         ],
                       ),
@@ -88,7 +99,8 @@ class HomePage extends StatelessWidget {
                           );
                         },
                         itemBuilder: (context, index) {
-                          return FeaturedRecipeCard(data: featuredRecipe[index]);
+                          return FeaturedRecipeCard(
+                              data: featuredRecipe[index]);
                         },
                       ),
                     ),
@@ -125,7 +137,8 @@ class HomePage extends StatelessWidget {
                       return SizedBox(width: 16);
                     },
                     itemBuilder: (context, index) {
-                      return RecommendationRecipeCard(data: recommendationRecipe[index]);
+                      return RecommendationRecipeCard(
+                          data: recommendationRecipe[index]);
                     },
                   ),
                 )
@@ -145,14 +158,21 @@ class HomePage extends StatelessWidget {
                   children: [
                     Text(
                       'Plantas enfermas registradas',
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, fontFamily: 'inter'),
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'inter'),
                     ),
                     TextButton(
                       onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => NewlyPostedPage()));
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => NewlyPostedPage()));
                       },
                       child: Text('ver todo'),
-                      style: TextButton.styleFrom(primary: Colors.black, textStyle: TextStyle(fontWeight: FontWeight.w400, fontSize: 14)),
+                      style: TextButton.styleFrom(
+                          primary: Colors.black,
+                          textStyle: TextStyle(
+                              fontWeight: FontWeight.w400, fontSize: 14)),
                     ),
                   ],
                 ),

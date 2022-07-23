@@ -1,14 +1,13 @@
-class usuarioLogin {
+class Usuario {
   int id;
   String nombre;
   String apellidos;
   String email;
   String password;
 
-  usuarioLogin(
-      {this.id, this.nombre, this.apellidos, this.email, this.password});
+  Usuario({this.id, this.nombre, this.apellidos, this.email, this.password});
 
-  usuarioLogin.fromJson(Map<String, dynamic> json) {
+  Usuario.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     nombre = json['nombre'];
     apellidos = json['apellidos'];

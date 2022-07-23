@@ -6,7 +6,7 @@ import 'package:camera/camera.dart';
 import 'package:torch_compat/torch_compat.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hungry/views/utils/AppColor.dart';
-import 'package:hungry/views/screens/search_page.dart';
+import 'package:hungry/plant/ui/screens/search_page.dart';
 
 class TakePictureScreen extends StatefulWidget {
   //final CameraDescription camera;

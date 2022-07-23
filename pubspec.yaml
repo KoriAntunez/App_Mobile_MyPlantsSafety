@@ -30,6 +30,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_svg: ^0.22.0
+  flutter_clean_architecture: ^5.0.2
 
 
 dev_dependencies:

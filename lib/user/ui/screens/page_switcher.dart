@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:hungry/views/screens/bookmarks_page.dart';
-import 'package:hungry/views/screens/explore_page.dart';
-import 'package:hungry/views/screens/home_page.dart';
+import 'package:hungry/plant/ui/screens/bookmarks_page.dart';
+import 'package:hungry/plant/ui/screens/explore_page.dart';
+import 'package:hungry/plant/ui/screens/home_page.dart';
 import 'package:hungry/views/utils/AppColor.dart';
-import 'package:hungry/views/widgets/custom_bottom_navigation_bar.dart';
-import 'package:hungry/views/widgets/modals/login_modal.dart';
+import 'package:hungry/plant/ui/widgets/custom_bottom_navigation_bar.dart';
+import 'package:hungry/user/ui/widgets/login_modal.dart';
 
 class PageSwitcher extends StatefulWidget {
   @override

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hungry/models/core/recipe.dart';
 import 'package:hungry/models/helper/recipe_helper.dart';
 import 'package:hungry/views/utils/AppColor.dart';
-import 'package:hungry/views/widgets/recipe_tile.dart';
+import 'package:hungry/plant/ui/widgets/recipe_tile.dart';
 
 class NewlyPostedPage extends StatelessWidget {
   final TextEditingController searchInputController = TextEditingController();
@@ -15,7 +15,11 @@ class NewlyPostedPage extends StatelessWidget {
         backgroundColor: AppColor.primary,
         centerTitle: true,
         elevation: 0,
-        title: Text('Newly Posted', style: TextStyle(fontFamily: 'inter', fontWeight: FontWeight.w400, fontSize: 16)),
+        title: Text('Newly Posted',
+            style: TextStyle(
+                fontFamily: 'inter',
+                fontWeight: FontWeight.w400,
+                fontSize: 16)),
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios, color: Colors.white),
           onPressed: () {

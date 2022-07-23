@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hungry/views/screens/page_switcher.dart';
+import 'package:hungry/user/ui/screens/page_switcher.dart';
 import 'package:hungry/views/utils/AppColor.dart';
-import 'package:hungry/views/widgets/custom_text_field.dart';
-import 'package:hungry/views/widgets/modals/login_modal.dart';
+import 'package:hungry/user/ui/widgets/custom_text_field.dart';
+import 'package:hungry/user/ui/widgets/login_modal.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 

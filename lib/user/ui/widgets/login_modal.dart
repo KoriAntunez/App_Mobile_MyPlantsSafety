@@ -3,13 +3,13 @@ import 'dart:js';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:hungry/views/screens/page_switcher.dart';
+import 'package:hungry/user/ui/screens/page_switcher.dart';
 import 'package:hungry/views/utils/AppColor.dart';
-import 'package:hungry/views/widgets/custom_text_field.dart';
-import 'package:hungry/views/screens/bookmarks_page.dart';
-import 'package:hungry/views/widgets/modals/register_modal.dart';
-import 'package:hungry/models/core/login_model.dart';
-import 'package:hungry/models/core/usuarioLogin.dart';
+import 'package:hungry/user/ui/widgets/custom_text_field.dart';
+import 'package:hungry/user/ui/widgets/register_modal.dart';
+//import 'package:hungry/models/core/login_model.dart';
+import 'package:hungry/user/model/usuario.dart';
+import 'package:hungry/user/usecases/login_usecase.dart';
 
 class LoginModal extends StatefulWidget {
   @override
@@ -34,19 +34,25 @@ class _LoginModalState extends State<LoginModal> {
     }
   }
 
+/*
   void login(String email, String password) async {
     try {
-      http.Response response = await http.post(Uri.parse('https://localhost:44356/api/Usuario/login'),
-          headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',},
-          body: jsonEncode({"id": 0,
-            "nombre": "",
-            "apellidos": "",
-            "email": email,
-            "password": password}),);
+      http.Response response = await http.post(
+        Uri.parse('https://localhost:44356/api/Usuario/login'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode({
+          "id": 0,
+          "nombre": "",
+          "apellidos": "",
+          "email": email,
+          "password": password
+        }),
+      );
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body);
-        usuarioLogin users = new usuarioLogin.fromJson(data);
+        Usuario users = new Usuario.fromJson(data);
         print(users.nombre);
         print('Login successful');
       } else {
@@ -56,7 +62,7 @@ class _LoginModalState extends State<LoginModal> {
       print(e.toString());
     }
   }
-
+*/
   @override
   Widget build(BuildContext context) {
     return Wrap(
@@ -130,7 +136,7 @@ class _LoginModalState extends State<LoginModal> {
                     //_onFormSubmit();
                     final form = _formKey.currentState;
                     if (form.validate()) {
-                      login(emailCtrl.text.toString(),
+                      LoginUseCase.login(emailCtrl.text.toString(),
                           passwordCtrl.text.toString());
                       Navigator.of(context).pop();
                       Navigator.of(context).pushReplacement(MaterialPageRoute(

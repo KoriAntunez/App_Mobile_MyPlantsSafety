@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hungry/models/core/recipe.dart';
 import 'package:hungry/models/helper/recipe_helper.dart';
-import 'package:hungry/views/screens/search_page.dart';
+import 'package:hungry/plant/ui/screens/search_page.dart';
 import 'package:hungry/views/utils/AppColor.dart';
 import 'package:hungry/views/widgets/category_card.dart';
-import 'package:hungry/views/widgets/popular_recipe_card.dart';
-import 'package:hungry/views/widgets/recommendation_recipe_card.dart';
+import 'package:hungry/plant/ui/widgets/popular_recipe_card.dart';
+import 'package:hungry/plant/ui/widgets/recommendation_recipe_card.dart';
 // Agregado
-import 'package:hungry/views/widgets/modals/options_modal.dart';
+import 'package:hungry/user/ui/widgets/options_modal.dart';
 // Para la cámara
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hungry/views/utils/AppColor.dart';
 import 'package:hungry/views/widgets/user_info_tile.dart';
-import 'package:hungry/views/widgets/custom_text_field.dart';
+import 'package:hungry/user/ui/widgets/custom_text_field.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
