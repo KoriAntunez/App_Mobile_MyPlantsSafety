@@ -22,14 +22,11 @@ environment:
 
 dependencies:
   cupertino_icons: ^1.0.2
-<<<<<<< Updated upstream
-=======
   camera: ^0.9.8+1
   image_picker: ^0.8.5+3
   path_provider: ^2.0.11
   torch_compat: ^1.0.2
   http:
->>>>>>> Stashed changes
   flutter:
     sdk: flutter
   flutter_svg: ^0.22.0
