@@ -3,10 +3,6 @@ import 'package:hungry/views/screens/page_switcher.dart';
 import 'package:hungry/views/utils/AppColor.dart';
 import 'package:hungry/views/widgets/custom_text_field.dart';
 import 'package:hungry/views/widgets/modals/login_modal.dart';
-<<<<<<< Updated upstream
-
-class RegisterModal extends StatelessWidget {
-=======
 import 'package:hungry/models/core/register_model.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -47,7 +43,7 @@ class _RegisterModalState extends State<RegisterModal> {
     }
   }
 
->>>>>>> Stashed changes
+
   @override
   Widget build(BuildContext context) {
     return Wrap(
