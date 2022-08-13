@@ -87,10 +87,8 @@ class _RegisterModalState extends State<RegisterModal> {
                 height: 60,
                 child: ElevatedButton(
                   onPressed: () {
-<<<<<<< Updated upstream
                     Navigator.of(context).pop();
                     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => PageSwitcher()));
-=======
                     final form = _formKey.currentState;
                     if (form.validate()) {
                       register(nameCtrl.text.toString(), nameCtrl.text.toString(), emailCtrl.text.toString(), passwordCtrl.text.toString());
@@ -108,7 +106,6 @@ class _RegisterModalState extends State<RegisterModal> {
                         },
                       );
                     }
->>>>>>> Stashed changes
                   },
                   child: Text('Registrar', style: TextStyle(color: AppColor.secondary, fontSize: 16, fontWeight: FontWeight.w600, fontFamily: 'inter')),
                   style: ElevatedButton.styleFrom(

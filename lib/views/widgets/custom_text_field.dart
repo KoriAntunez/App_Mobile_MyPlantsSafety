@@ -1,26 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:hungry/views/utils/AppColor.dart';
-import 'package:hungry/views/screens/bookmarks_page.dart';
-import 'package:hungry/api/api_service.dart';
 
 class CustomTextField extends StatelessWidget {
-  @override
-  State<CustomTextField> createState() => _CustomTextField();
-  }
-
-class _CustomTextField extends State<CustomTextField> {
+  final Function validator;
   final String title;
   final String hint;
-  final String validationMessage;
   final TextEditingController controller;
   final bool obsecureText;
   final EdgeInsetsGeometry padding;
   final EdgeInsetsGeometry margin;
 
   CustomTextField({
+    @required this.validator,
     @required this.title,
     @required this.hint,
-    @required this.validationMessage,
     this.controller,
     this.obsecureText = false,
     this.padding,
@@ -62,22 +55,55 @@ class _CustomTextField extends State<CustomTextField> {
                 contentPadding: EdgeInsets.only(left: 16),
                 border: InputBorder.none,
               ),
-              onSaved: (input) {
+              validator: validator,
+              /*
+              validator: (val) {
                 if (title == "Email") {
-                      return input;
-                }
-                if (title == "Password") {
                   if (val.isEmpty) {
-                    return '$validationMessage';
+                    return 'Ingrese un email';
                   } else {
-                    if (!RegExp('^.{8}').hasMatch(val)) {
-                      return '$validationMessage válido';
+                    if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}')
+                        .hasMatch(val)) {
+                      return 'Ingrese válido';
                     } else {
                       return null;
                     }
                   }
                 }
-              },
+                if (title == "Password") {
+                  if (val.isEmpty) {
+                    return 'Ingrese una contraseña';
+                  } else {
+                    if (!RegExp('^.{8}').hasMatch(val)) {
+                      return 'Ingrese una contraseña válida';
+                    } else {
+                      return null;
+                    }
+                  }
+                }
+                if (title == "Nombre y Apellidos") {
+                  if (val.isEmpty) {
+                    return 'Ingrese su nombre y apellidos';
+                  } else {
+                    if (!RegExp(r'(^[a-zA-Z ]*$)').hasMatch(val)) {
+                      return 'El nombre solo debe contener letras';
+                    } else {
+                      return null;
+                    }
+                  }
+                }
+                if (title == "Repetir Password") {
+                  if (val.isEmpty) {
+                    return 'Ingrese una contraseña';
+                  } else {
+                    if (!RegExp('^.{8}').hasMatch(val)) {
+                      return 'Ingrese una contraseña válida';
+                    } else {
+                      return null;
+                    }
+                  }
+                }
+              },*/
             ),
           ),
         ],
