@@ -3,6 +3,7 @@ import 'package:hungry/views/screens/page_switcher.dart';
 import 'package:hungry/views/utils/AppColor.dart';
 import 'package:hungry/views/widgets/custom_text_field.dart';
 import 'package:hungry/views/widgets/modals/login_modal.dart';
+import 'package:hungry/models/core/register_model.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -17,6 +18,30 @@ class _RegisterModalState extends State<RegisterModal> {
   TextEditingController emailCtrl = new TextEditingController();
   TextEditingController passwordCtrl = new TextEditingController();
   TextEditingController repeatPassCtrl = new TextEditingController();
+
+  void register(String nombre, String apellidos, String email, String password) async {
+    try {
+      http.Response response = await http.post(Uri.parse('https://localhost:44356/api/Usuario/registro'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',},
+        body: jsonEncode({"id": 0,
+          "nombre": nombre,
+          "apellidos": apellidos,
+          "email": email,
+          "password": password}),);
+      if (response.statusCode == 200) {
+        print("ok");
+        var data = jsonDecode(response.body);
+        RegisterModel users = new RegisterModel.fromJson(data);
+        print(users.nombre);
+        print('Registro exitoso');
+      } else {
+        print('filed');
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -102,6 +127,7 @@ class _RegisterModalState extends State<RegisterModal> {
                   onPressed: () {
                     final form = _formKey.currentState;
                     if (form.validate()) {
+                      register(nameCtrl.text.toString(), nameCtrl.text.toString(), emailCtrl.text.toString(), passwordCtrl.text.toString());
                       Navigator.of(context).pop();
                       showModalBottomSheet(
                         context: context,
