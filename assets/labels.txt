@@ -1,2 +1,4 @@
-This is a Bird
-This is a Animal
+0 Plaga
+1 Mancha Gris
+2 Raya Común
+3 Sana
