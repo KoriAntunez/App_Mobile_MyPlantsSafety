@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttermlprediction/AppColor.dart';
+import 'package:fluttermlprediction/user/ui/screens/login_modal.dart';
+import 'package:fluttermlprediction/user/ui/screens/register_modal.dart';
 // FILE .DART DEL MODELO
 import '../../../ui.dart';
 
@@ -65,7 +67,8 @@ class WelcomePage extends StatelessWidget {
                               onPressed: () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (context) => UI()),
+                                  MaterialPageRoute(
+                                      builder: (context) => RegisterModal()),
                                 );
                               },
                               style: ElevatedButton.styleFrom(
