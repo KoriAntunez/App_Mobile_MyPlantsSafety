@@ -166,6 +166,7 @@ var popularRecipeRawData = {
   ]
 };
 
+
 var featuredRecipeRawData = [
   {
     'title': 'Planta de pimenton',
