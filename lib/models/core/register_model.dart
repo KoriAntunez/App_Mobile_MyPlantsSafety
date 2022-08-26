@@ -6,6 +6,7 @@ class RegisterModel {
   String password;
   RegisterModel(
       {this.Id, this.nombre, this.apellidos, this.email, this.password});
+  
   factory RegisterModel.fromJson(Map<dynamic, dynamic> parsedJson) {
     return RegisterModel(
       Id: parsedJson["id"],
